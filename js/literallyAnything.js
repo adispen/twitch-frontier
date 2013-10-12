@@ -199,3 +199,13 @@ function whiteListCheck(games) {
     else if($.QueryString('color') == 'black')
         $('#x').prop('checked', true);
 }
+
+function getSimilarGames(game) {
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'http://www.giantbomb.com/api/game/[RESOURCE-ID]/?api_key=[YOUR-KEY]&format=[RESPONSE-DATA-FORMAT]&field_list'
+        success: function (games) {
+            var rand = Math.floor(Math.random()*(games._total-10) + 10);
+        }
+    });
+	

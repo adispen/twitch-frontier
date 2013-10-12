@@ -1,0 +1,25 @@
+/*!
+ * jQuery UI Autocomplete 1.10.3
+ * http://jqueryui.com
+ *
+ * Copyright 2013 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete {
+	position: left;
+	top: 0;
+	left: 0;
+	font-size: 70%;
+	cursor: default;
+	padding: 0.3125em 0.625em;
+	padding-top: 0.3125em;
+	padding-right: 0.625em;
+	padding-bottom: 0.3125em;
+	padding-left: 0.625em;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 200px;
+}

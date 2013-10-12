@@ -1,0 +1,31 @@
+.clearable{
+    position:relative;
+}
+.data_field{
+    padding-right:17px; /* add space for the 'x' icon*/
+}
+span.icon_clear{
+    position:absolute;
+    right:22px;    
+    top:10px;
+    display:none;
+
+    /* now go with the styling */
+    cursor:pointer;
+    font: bold 1em sans-serif;
+    color:#38468F;  
+    }
+span.icon_clear:hover{
+    color:#f52;
+}
+
+#ignore {
+    padding-right: 8px;
+    padding-top: 7px;
+    font-size: 15px;
+    opacity: 0;
+}
+
+#x {
+    top: 10px;
+}

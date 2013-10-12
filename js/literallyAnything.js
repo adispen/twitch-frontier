@@ -190,7 +190,7 @@ function videoCreate(){
     iframe.height = '480';
     iframe.width = "{WIDTH}";
     $("#vidDiv").append(iframe);
-    $('#title').html( "Twitch Fronteir found " + message + " playing " + game);
+    $('#title').html( "Twitch Frontier found " + message + " playing " + game);
 }
 
 function whiteListCheck(games) {

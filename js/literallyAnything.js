@@ -97,7 +97,7 @@ function normalRandom(){
                     var owner = streamInfo.streams[0].channel.display_name;
                     var game = streamInfo.streams[0].channel.game;
                     console.log(owner, game);
-                    window.location.href = 'http://twitch-wildcard.herokuapp.com/index.html?channel=' + owner + '&game=' + game+ "&color=grey";
+                    window.location.href = '/index.html?channel=' + owner + '&game=' + game+ "&color=grey";
                 }
             });
         }
@@ -113,7 +113,7 @@ function whiteListRandom() {
             var owner = channelList.streams[i].channel.display_name;
             var game = channelList.streams[i].channel.game;
             console.log(owner, game);
-            window.location.href = 'http://twitch-wildcard.herokuapp.com/index.html?channel=' + owner + '&game=' + game + "&color=white";
+            window.location.href = '/index.html?channel=' + owner + '&game=' + game + "&color=white";
         }
     });
 }
@@ -138,7 +138,7 @@ function blackListRandom() {
                         success: function (channelList) {
                             var owner = channelList.streams[0].channel.display_name;
                             var game = channelList.streams[0].channel.game;
-                            window.location.href = 'http://twitch-wildcard.herokuapp.com/index.html?channel=' + owner + '&game=' + game + "&color=black";
+                            window.location.href = 'index.html?channel=' + owner + '&game=' + game + "&color=black";
                         }
                     });
                 }
@@ -190,7 +190,7 @@ function videoCreate(){
     iframe.height = '480';
     iframe.width = "{WIDTH}";
     $("#vidDiv").append(iframe);
-    $('#title').html( "Twitch WildCard drew " + message + " playing " + game);
+    $('#title').html( "Twitch Fronteir found " + message + " playing " + game);
 }
 
 function whiteListCheck(games) {

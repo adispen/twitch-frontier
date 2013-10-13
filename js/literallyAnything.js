@@ -221,7 +221,7 @@ function createTwitter(message, game){
     iframe.scrolling = 'no';
     iframe.frameBorder = '0';
     iframe.allowtransparency = 'true';
-    iframe.src = 'http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381628353603&count=horizontal&id=twitter-widget-0&lang=en&original_referer=http%3A%2F%2Fwww.twitch.tv%2Fsaltybet&related=Twitch&size=m&text=Watch%20' + message + ' play ' + game +'!&url=http%3A%2F%2Fwww.twitch.tv%2F' + message;
+    iframe.src = 'http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381628353603&count=horizontal&id=twitter-widget-0&lang=en&related=Twitch&size=m&text=Watch%20' + message + ' play ' + game +'!&url=http%3A%2F%2Fwww.twitch.tv%2F' + message;
     iframe.class = 'twitter-share-button twitter-tweet-button twitter-count-horizontal';
     iframe.title = 'Tweet About This Stream!'
     iframe.data = 'true';

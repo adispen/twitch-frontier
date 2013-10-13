@@ -60,6 +60,8 @@ $(function() {
     
     if (message != null) {
         videoCreate();
+        createFacebook(message);
+        createTwitter(message, game);
     } else {
         $('#title').html('Click Random Channel to start.');
         $('#newStart').css({
@@ -193,14 +195,25 @@ function videoCreate(){
     $('#title').html( "Twitch Frontier found " + message + " playing " + game);
 }
 function createFacebook(message){
-    var iframe = document.createElement('iframe')
+    var iframe = document.createElement('iframe');
     iframe.allowtransparency = 'true';
     iframe.frameborder = '0';
-    iframe.id = 'facebook_like_iframe'
     iframe.scrolling = 'no';
-    iframe.src = 'http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/'+ message + '&amp;layout=button_count&amp;show_faces=false&amp;width=85&amp;action=like&amp;colorscheme=light&amp;height=21';
-    iframe.style = 'border:none; overflow:hidden; width:85px; height:21px; position: relative; top: 3px;'
+    iframe.src = "http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/"+ message + "&layout=standard&show_faces=false&width=10&action=like&colorscheme=light&height=10";
+    iframe.style = 'border:none; overflow:hidden; width:10px; height:10px; position: relative; top: 3px;';
     $("#fbLike").append(iframe);
+}
+function createTwitter(message, game){
+    var iframe = document.createElement('iframe');
+    iframe.scrolling = 'no';
+    iframe.frameborder = '0';
+    iframe.allowtransparency = 'true';
+    iframe.src = 'http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381628353603&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fwww.twitch.tv%2Fsaltybet&amp;related=Twitch&amp;size=m&amp;text=Watch%20' + message + ' play ' + game +'!&amp;url=http%3A%2F%2Fwww.twitch.tv%2F' + message;
+    iframe.class = 'twitter-share-button twitter-tweet-button twitter-count-horizontal';
+    iframe.title = 'Tweet About This Stream!'
+    iframe.data-twttr-rendered = 'true';
+    iframe.style = 'width: 106px; height: 20px;';
+    $("#tweet").append(iframe);
 }
 function whiteListCheck(games) {
     if($.QueryString('color') == 'white')
@@ -232,7 +245,6 @@ function getSimilarGames(gameID) {
     
 
 }
-
 
 function getStores(gameName) {
     

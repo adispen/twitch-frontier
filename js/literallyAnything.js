@@ -62,14 +62,11 @@ $(function() {
     if (message != null) {
         console.log("id =" + gameID);
         videoCreate();
-<<<<<<< HEAD
         if(gameID != null) {
             getSimilarGames();
         }
-=======
         createFacebook(message);
         createTwitter(message, game);
->>>>>>> 68c36c91303c2f5ed9aa4fb4c86452a544cb56ec
     } else {
         $('#title').html('Click Random Channel to start.');
         $('#newStart').css({
@@ -204,17 +201,14 @@ function videoCreate(){
     $('#title').html( "Twitch Frontier found " + message + " playing " + game);
 }
 function createFacebook(message){
-<<<<<<< HEAD
     var iframe = document.createElement('iframe')
     iframe.allowTransparency = 'true';
     iframe.frameBorder = '0';
     iframe.id = 'facebook_like_iframe'
-=======
     var iframe = document.createElement('iframe');
     iframe.name = 'left';
     iframe.allowTransparency = 'true';
     iframe.frameBorder = '1';
->>>>>>> 68c36c91303c2f5ed9aa4fb4c86452a544cb56ec
     iframe.scrolling = 'no';
     iframe.height = '25px';
     iframe.width = '106px';
@@ -247,7 +241,6 @@ function whiteListCheck(games) {
 }
 
 function getSimilarGames() {
-    console.log("similarGames");
     var yql_url = 'https://query.yahooapis.com/v1/public/yql';
     var url = "'https://www.giantbomb.com/api/game/' + gameID + '/?api_key=8d728e293dc117083117383a6517eaff526fd50d&format=JSON&similar_games'";
     $.ajax({
@@ -261,6 +254,7 @@ function getSimilarGames() {
         'success': function (suggest) {
             similarGames = [];
             for (var i = 0; i < suggest.similar_games.length; i++) {
+                console.log(suggest.similar_games[i]);
                 similarGames.push(suggest.similar_games[i].name);
             }
             postSimilarGames(similarGames);

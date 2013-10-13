@@ -67,7 +67,7 @@ $(function() {
         videoCreate();
         if(gameID != null) {
             getSimilarGames();
-            customAPI();
+            //customAPI();
         }
         createFacebook(message);
         createTwitter(message, game);
@@ -284,7 +284,7 @@ function postSimilarGames(similarGames) {
     //$("#similar").append(similar);
 
 }
-/*
+
 function getStores() {
     var win = window.open('http://www.cheapshark.com/search?q='+game, '_blank','width=600,height=600');
     win.titlebar=0;
@@ -295,7 +295,7 @@ function getStores() {
     win.focus();
     
 }
-
+/*
 function customAPI() {
     var dealURLs;
     var yurl = 'https://query.yahooapis.com/v1/public/yql';

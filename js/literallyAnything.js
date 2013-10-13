@@ -242,22 +242,24 @@ function whiteListCheck(games) {
 
 function getSimilarGames() {
     var yql_url = 'https://query.yahooapis.com/v1/public/yql';
-    var url = "'https://www.giantbomb.com/api/game/' + gameID + '/?api_key=8d728e293dc117083117383a6517eaff526fd50d&format=JSON&similar_games'";
+    var url = 'https://www.giantbomb.com/api/game/' + gameID + '/?api_key=8d728e293dc117083117383a6517eaff526fd50d&format=JSON&similar_games';
     $.ajax({
         'url': yql_url,
         'data': {
-            q: 'SELECT * FROM json WHERE url="'+url+'"',
-            format: 'json',
-            jsonCompat: 'new'
+            'q': 'SELECT * FROM json WHERE url="'+url+'"',
+            'format': 'json',
+            'jsonCompat': 'new',
         },
         'dataType': 'jsonp', 
         'success': function (suggest) {
-            similarGames = [];
-            for (var i = 0; i < suggest.similar_games.length; i++) {
-                console.log(suggest.similar_games[i]);
-                similarGames.push(suggest.similar_games[i].name);
+            var similarGames = suggest.query.results.json.results.similar_games;
+            var similarURLs = '';
+            for (var i = 0; i < similarGames.length; i++) {
+                temp = similarGames[i];
+                similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a>' + '\n' );
+                console.log(similarURLs);
             }
-            postSimilarGames(similarGames);
+            postSimilarGames(similarURLs);
         }
     });
 }
@@ -266,7 +268,7 @@ function postSimilarGames(similarGames) {
     var similar = document.createElement('iframe');
     similar.scrolling = 'no';
     similar.id = 'similar games';
-    similar.src = similarGames;
+    similar.HTML = similarGames;
     similar.frameborder = '0';
     similar.height = '480';
     similar.width = "{WIDTH}";

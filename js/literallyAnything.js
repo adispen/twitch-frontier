@@ -284,7 +284,7 @@ function postSimilarGames(similarGames) {
     //$("#similar").append(similar);
 
 }
-
+/*
 function getStores() {
     var win = window.open('http://www.cheapshark.com/search?q='+game, '_blank','width=600,height=600');
     win.titlebar=0;
@@ -364,4 +364,4 @@ function postDealURLs(dealURLs) {
     similar.frameborder = '0';
     similar.height = '480';
     similar.width = "{WIDTH}";
-}
+} */

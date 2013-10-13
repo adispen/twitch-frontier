@@ -196,6 +196,15 @@ function videoCreate(){
 }
 function createFacebook(message){
     var div = document.createElement('div');
+    div.class = 'fb-like';
+    div.data-href = "http://www.twitch.tv/" + message;
+    div.data-width = 'The pixel width of the plugin';
+    div.data-height="The pixel height of the plugin";
+    div.data-colorscheme="dark";
+    div.data-layout="button_count";
+    div.data-action="like";
+    data-show-faces="false";
+    data-send="false";
 
     $("#fbLike").append(div);
 }

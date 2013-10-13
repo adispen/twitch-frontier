@@ -62,9 +62,14 @@ $(function() {
     if (message != null) {
         console.log("id =" + gameID);
         videoCreate();
+<<<<<<< HEAD
         if(gameID != null) {
             getSimilarGames();
         }
+=======
+        createFacebook(message);
+        createTwitter(message, game);
+>>>>>>> 68c36c91303c2f5ed9aa4fb4c86452a544cb56ec
     } else {
         $('#title').html('Click Random Channel to start.');
         $('#newStart').css({
@@ -199,14 +204,40 @@ function videoCreate(){
     $('#title').html( "Twitch Frontier found " + message + " playing " + game);
 }
 function createFacebook(message){
+<<<<<<< HEAD
     var iframe = document.createElement('iframe')
     iframe.allowTransparency = 'true';
     iframe.frameBorder = '0';
     iframe.id = 'facebook_like_iframe'
+=======
+    var iframe = document.createElement('iframe');
+    iframe.name = 'left';
+    iframe.allowTransparency = 'true';
+    iframe.frameBorder = '1';
+>>>>>>> 68c36c91303c2f5ed9aa4fb4c86452a544cb56ec
     iframe.scrolling = 'no';
-    iframe.src = 'http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/'+ message + '&amp;layout=button_count&amp;show_faces=false&amp;width=85&amp;action=like&amp;colorscheme=light&amp;height=21';
-    iframe.style = 'border:none; overflow:hidden; width:85px; height:21px; position: relative; top: 3px;'
+    iframe.height = '25px';
+    iframe.width = '106px';
+    iframe.src = "http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/" + message + "&layout=button_count&show_faces=false&width=10&action=like&colorscheme=dark&height=21";
+    iframe.style = "display:inline; border:none; overflow:hidden; width:10px; height:21px;";
     $("#fbLike").append(iframe);
+}
+function createTwitter(message, game){
+    var iframe = document.createElement('iframe');
+    iframe.name = 'right';
+    iframe.id = 'twitter-widget-0';
+    iframe.scrolling = 'no';
+    iframe.frameBorder = '1';
+    iframe.allowtransparency = 'true';
+    iframe.src = 'http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381628353603&count=horizontal&id=twitter-widget-0&lang=en&original_referer=http%3A%2F%2Fwww.twitch.tv%2Fsaltybet&related=Twitch&size=m&text=Watch%20' + message + ' play ' + game +'!&url=http%3A%2F%2Fwww.twitch.tv%2F' + message;
+    iframe.class = 'twitter-share-button twitter-tweet-button twitter-count-horizontal';
+    iframe.title = 'Tweet About This Stream!'
+    iframe.data = 'true';
+    iframe.display = "inline";
+    iframe.height = '25px';
+    iframe.width = '106px';
+    iframe.style = 'display:inline; width: 106px; height: 20px;';
+    $("#tweet").append(iframe);
 }
 function whiteListCheck(games) {
     if($.QueryString('color') == 'white')
@@ -249,7 +280,6 @@ function postSimilarGames(similarGames) {
     $("#similar").append(similar);
 
 }
-
 
 function getStores(gameName) {
     

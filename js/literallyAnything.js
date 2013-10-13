@@ -196,23 +196,31 @@ function videoCreate(){
 }
 function createFacebook(message){
     var iframe = document.createElement('iframe');
-    iframe.allowtransparency = 'true';
-    iframe.frameborder = '0';
+    iframe.name = 'left';
+    iframe.allowTransparency = 'true';
+    iframe.frameBorder = '1';
     iframe.scrolling = 'no';
-    iframe.src = "http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/"+ message + "&layout=standard&show_faces=false&width=10&action=like&colorscheme=light&height=10";
-    iframe.style = 'border:none; overflow:hidden; width:10px; height:10px; position: relative; top: 3px;';
+    iframe.height = '25px';
+    iframe.width = '106px';
+    iframe.src = "http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/" + message + "&layout=button_count&show_faces=false&width=10&action=like&colorscheme=dark&height=21";
+    iframe.style = "display:inline; border:none; overflow:hidden; width:10px; height:21px;";
     $("#fbLike").append(iframe);
 }
 function createTwitter(message, game){
     var iframe = document.createElement('iframe');
+    iframe.name = 'right';
+    iframe.id = 'twitter-widget-0';
     iframe.scrolling = 'no';
-    iframe.frameborder = '0';
+    iframe.frameBorder = '1';
     iframe.allowtransparency = 'true';
-    iframe.src = 'http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381628353603&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fwww.twitch.tv%2Fsaltybet&amp;related=Twitch&amp;size=m&amp;text=Watch%20' + message + ' play ' + game +'!&amp;url=http%3A%2F%2Fwww.twitch.tv%2F' + message;
+    iframe.src = 'http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381628353603&count=horizontal&id=twitter-widget-0&lang=en&original_referer=http%3A%2F%2Fwww.twitch.tv%2Fsaltybet&related=Twitch&size=m&text=Watch%20' + message + ' play ' + game +'!&url=http%3A%2F%2Fwww.twitch.tv%2F' + message;
     iframe.class = 'twitter-share-button twitter-tweet-button twitter-count-horizontal';
     iframe.title = 'Tweet About This Stream!'
-    iframe.data-twttr-rendered = 'true';
-    iframe.style = 'width: 106px; height: 20px;';
+    iframe.data = 'true';
+    iframe.display = "inline";
+    iframe.height = '25px';
+    iframe.width = '106px';
+    iframe.style = 'display:inline; width: 106px; height: 20px;';
     $("#tweet").append(iframe);
 }
 function whiteListCheck(games) {

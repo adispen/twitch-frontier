@@ -262,7 +262,7 @@ function getSimilarGames() {
             var similarURLs = '<p> <b> ▼ Suggested Similar Games ▼ </b> </p> ';
             for (var i = 0; i < similarGames.length; i++) {
                 temp = similarGames[i];
-                similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a> <br>' );
+                similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a> <br style="line-height:120%">' );
                 console.log(similarURLs);
             }
             similarURLs += '<br>';

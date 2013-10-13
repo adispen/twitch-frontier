@@ -259,7 +259,7 @@ function getSimilarGames() {
         'dataType': 'jsonp', 
         'success': function (suggest) {
             var similarGames = suggest.query.results.json.results.similar_games;
-            var similarURLs = '<p> <b> &#x2B07 Suggested Similar Games &#x2B07 </b> </p> ';
+            var similarURLs = '<p> <b> ▼ Suggested Similar Games ▼ </b> </p> ';
             for (var i = 0; i < similarGames.length; i++) {
                 temp = similarGames[i];
                 similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a> <br>' );

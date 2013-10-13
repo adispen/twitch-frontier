@@ -3015,9 +3015,8 @@ label.error {
     .top-bar .button {
       line-height: 2em;
       font-size: 0.875em;
-      text-align: center;
       height: 2em;
-      padding-bottom: 3px;
+      padding: 0 10px;
       position: relative;
       top: 8px; }
     .top-bar.expanded {

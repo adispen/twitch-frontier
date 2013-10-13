@@ -251,12 +251,13 @@ function getSimilarGames() {
         'dataType': 'jsonp', 
         'success': function (suggest) {
             var similarGames = suggest.query.results.json.results.similar_games;
-            var similarURLs = '<p> <u> Suggested Similar Games: </u> </p> ';
+            var similarURLs = '<br> <p> <b> Suggested Similar Games: </b> </p> ';
             for (var i = 0; i < similarGames.length; i++) {
                 temp = similarGames[i];
-                similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a> <br> ' );
+                similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a> <br>' );
                 console.log(similarURLs);
             }
+            similarURLs += '<br>';
             postSimilarGames(similarURLs);
         }
     });
@@ -275,6 +276,13 @@ function postSimilarGames(similarGames) {
 
 }
 
-function getStores(gameName) {
+function getStores() {
+    var win = window.open('http://www.cheapshark.com/search?q='+game, '_blank','width=600,height=600');
+    win.titlebar=0;
+    win.toolbar=0;
+    win.status=0;
+    win.fullscreen=0;
+    win.scrollTo(300,0);
+    win.focus();
     
 }

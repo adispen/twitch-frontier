@@ -251,10 +251,10 @@ function getSimilarGames() {
         'dataType': 'jsonp', 
         'success': function (suggest) {
             var similarGames = suggest.query.results.json.results.similar_games;
-            var similarURLs = '';
+            var similarURLs = '<p> <u> Suggested Similar Games: </u> </p> ';
             for (var i = 0; i < similarGames.length; i++) {
                 temp = similarGames[i];
-                similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a>' + '\n' );
+                similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a> <br> ' );
                 console.log(similarURLs);
             }
             postSimilarGames(similarURLs);
@@ -263,15 +263,15 @@ function getSimilarGames() {
 }
     
 function postSimilarGames(similarGames) {
-    var similar = document.createElement('iframe');
+    var similar = document.getElementById('similar');
     similar.scrolling = 'no';
     similar.id = 'similar games';
-    similar.HTML = similarGames;
+    similar.innerHTML = similarGames;
     similar.frameborder = '0';
     similar.height = '480';
     similar.width = "{WIDTH}";
     
-    $("#similar").append(similar);
+    //$("#similar").append(similar);
 
 }
 

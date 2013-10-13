@@ -14,6 +14,7 @@ Created by: Aedan Dispenza and Paul Tai Fall 2013
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
+    <script src="js/vendor/custom.modernizr.js"></script>
     <link href='img/favicon.ico' rel='shortcut icon' type='image/x-icon' />
     <meta charset="utf-8">
     <title>Twitch Frontier</title>
@@ -25,7 +26,7 @@ Created by: Aedan Dispenza and Paul Tai Fall 2013
     <link rel="stylesheet" href="css/style.css">
     <script src='js/jquery-2.0.3.min.js'></script> 
     <script src="js/jquery-ui.js"></script>
-    <script src = 'js/querystring-0.9.0.js'></script>
+    <script src ='js/querystring-0.9.0.js'></script>
     <script src="js/vendor/custom.modernizr.js"></script>
     <script src="js/literallyAnything.js"></script>
 	<nav class="top-bar">
@@ -33,14 +34,19 @@ Created by: Aedan Dispenza and Paul Tai Fall 2013
         <!-- Title Area -->
         <li class="name">
           <h1 id = 'title'></h1>
-          <a class="small round success button" onclick="getStores();
-" style="
-    padding-top: 3px;
-    left: 5px;
-"><p>
-Search Stores</p></a>
+<!--         <a class="small round success button" onclick="getStores();" style="padding-top: 3px;left: 5px;">
+            <p>
+              Search Stores
+            </p></a> -->
+          <a class="small round success button dropdown" data-dropdown="drop1" style="padding-top: 3px;left: 5px;"><p>Search Stores</p></a>
+          <ul id="drop1" class="f-dropdown">
+            <li id="cheapest"></li>
+            <li id=""></li>
+            <li id=""></li>
+          </ul>
       	</li>
       	</ul>
+
         
       	<ul class="right">
       		<li class="has-form">
@@ -70,7 +76,16 @@ Search Stores</p></a>
     </nav>
 </head>
 <body>
-
+<script>
+  document.write('<script src=js/vendor/'
+    + ('__proto__' in {} ? 'zepto' : 'jquery')
+    + '.js><\/script>');
+</script>
+<script>
+  $(function() {
+    $(document).foundation();
+  });
+</script>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -79,6 +94,7 @@ Search Stores</p></a>
   js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=412440802200898";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<script src="js/foundation.min.js"></script>
 <center>
     <h2 id='newStart'></h2>	
     <div id="vidDiv"></div>

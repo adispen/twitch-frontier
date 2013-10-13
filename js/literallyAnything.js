@@ -1,5 +1,6 @@
 var message = $.QueryString("channel");
 var game = $.QueryString("game");
+var gameID = $.QueryString("giantbomb_id");
 if (message == null)
     game = '';
 else
@@ -60,6 +61,7 @@ $(function() {
     
     if (message != null) {
         videoCreate();
+        getSimilarGames();
     } else {
         $('#title').html('Click Random Channel to start.');
         $('#newStart').css({
@@ -222,7 +224,10 @@ function getSimilarGames(gameID) {
         response(similarGames);
         }
     });
-    var similarGames = document.createElement('iframe');
+}
+    
+function postSimilarGames(similarGames) {
+    var similar = document.createElement('iframe');
     similar.scrolling = 'no';
     similar.id = 'similar games';
     similar.src = similarGames;
@@ -230,6 +235,7 @@ function getSimilarGames(gameID) {
     similar.height = '480';
     similar.width = "{WIDTH}";
     
+    $("#similar").append(similar);
 
 }
 

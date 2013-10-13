@@ -7,7 +7,7 @@ __  __  ______  ______  __  __    ______  __  __
 \ \_\ \_\ \_\ \_\ \_____\ \_\ \ \ \ \_\ \_\ \_____\ 
  \/_/\/_/\/_/\/_/\/_____/\/_/\/_/  \/_/ /_/\/_____/
 
-Created by: Aedan Dispenza and Paul Tai 2013                                               
+Created by: Aedan Dispenza, Josh Romer, and Paul Tai 2013                                               
 -->
 
 <!DOCTYPE html>
@@ -82,8 +82,28 @@ Created by: Aedan Dispenza and Paul Tai 2013
 <div>
 <center>
 <div id="similar"></div>
-<div id="fbLike"></div>
-<div id="tweet"></div>
+<style type="text/css" media="screen">
+.socialcontainer {
+  width: 100%;
+  display: table;
+  border-spacing: 10px;
+}
+.socialleft{
+  display: table-cell;
+  width: 50%;
+  text-align: right;
+}
+.socialright {
+  display: table-cell;
+  width: 50%;
+  padding-left: 10px;
+  text-align: left;
+}
+</style>
+<div class="socialcontainer">
+<div id="fbLike" class="socialleft"></div>
+<div id="tweet" class="socialright"></div>
+</div>
 </center>
 </div>
 </center>

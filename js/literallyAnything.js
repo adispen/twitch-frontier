@@ -1,6 +1,6 @@
 var message = $.QueryString("channel");
 var game = $.QueryString("game");
-var gameID = $.QueryString("giantbomb_id");
+var gameID = $.QueryString("id");
 if (message == null)
     game = '';
 else
@@ -60,8 +60,11 @@ $(function() {
     }
     
     if (message != null) {
+        console.log("id =" + gameID);
         videoCreate();
-        getSimilarGames();
+        if(gameID != null) {
+            getSimilarGames();
+        }
     } else {
         $('#title').html('Click Random Channel to start.');
         $('#newStart').css({
@@ -132,6 +135,7 @@ function blackListRandom() {
                 success: function (topremoved) {
                     var rand2 = Math.floor(Math.random()*topremoved.top[0].channels);
                     var name = topremoved.top[0].game.name;
+                    var gbID = topremoved.top[0].game.giantbomb_id;
                     console.log(topremoved.top[0].game.name);
                     console.log(rand2);
                     $.ajax({
@@ -140,7 +144,7 @@ function blackListRandom() {
                         success: function (channelList) {
                             var owner = channelList.streams[0].channel.display_name;
                             var game = channelList.streams[0].channel.game;
-                            window.location.href = 'http://twitch-frontier.herokuapp.com/index.html?channel=' + owner + '&game=' + game + "&color=black";
+                            window.location.href = 'http://twitch-frontier.herokuapp.com/index.html?channel=' + owner + '&game=' + game + "&id=" + gbID + "&color=black";
                         }
                     });
                 }
@@ -196,8 +200,8 @@ function videoCreate(){
 }
 function createFacebook(message){
     var iframe = document.createElement('iframe')
-    iframe.allowtransparency = 'true';
-    iframe.frameborder = '0';
+    iframe.allowTransparency = 'true';
+    iframe.frameBorder = '0';
     iframe.id = 'facebook_like_iframe'
     iframe.scrolling = 'no';
     iframe.src = 'http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/'+ message + '&amp;layout=button_count&amp;show_faces=false&amp;width=85&amp;action=like&amp;colorscheme=light&amp;height=21';
@@ -211,17 +215,24 @@ function whiteListCheck(games) {
         $('#x').prop('checked', true);
 }
 
-// Input is giant bomb id field from twitch's game info json response
-function getSimilarGames(gameID) {
+function getSimilarGames() {
+    console.log("similarGames");
+    var yql_url = 'https://query.yahooapis.com/v1/public/yql';
+    var url = "'https://www.giantbomb.com/api/game/' + gameID + '/?api_key=8d728e293dc117083117383a6517eaff526fd50d&format=JSON&similar_games'";
     $.ajax({
-        dataType: 'jsonp',
-        url: 'http://www.giantbomb.com/api/game/' + gameID + '/?api_key=8d728e293dc117083117383a6517eaff526fd50d&format=JSON&similar_games',
-        success: function (suggest) {
-            similarGames = []
+        'url': yql_url,
+        'data': {
+            q: 'SELECT * FROM json WHERE url="'+url+'"',
+            format: 'json',
+            jsonCompat: 'new'
+        },
+        'dataType': 'jsonp', 
+        'success': function (suggest) {
+            similarGames = [];
             for (var i = 0; i < suggest.similar_games.length; i++) {
                 similarGames.push(suggest.similar_games[i].name);
             }
-        response(similarGames);
+            postSimilarGames(similarGames);
         }
     });
 }

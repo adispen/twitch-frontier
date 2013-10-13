@@ -99,7 +99,7 @@ function normalRandom(){
                     var owner = streamInfo.streams[0].channel.display_name;
                     var game = streamInfo.streams[0].channel.game;
                     console.log(owner, game);
-                    window.location.href = '/index.html?channel=' + owner + '&game=' + game+ "&color=grey";
+                    window.location.href = 'http://twitch-frontier.herokuapp.com/index.html?channel=' + owner + '&game=' + game+ "&color=grey";
                 }
             });
         }
@@ -115,7 +115,7 @@ function whiteListRandom() {
             var owner = channelList.streams[i].channel.display_name;
             var game = channelList.streams[i].channel.game;
             console.log(owner, game);
-            window.location.href = '/index.html?channel=' + owner + '&game=' + game + "&color=white";
+            window.location.href = 'http://twitch-frontier.herokuapp.com/index.html?channel=' + owner + '&game=' + game + "&color=white";
         }
     });
 }
@@ -140,7 +140,7 @@ function blackListRandom() {
                         success: function (channelList) {
                             var owner = channelList.streams[0].channel.display_name;
                             var game = channelList.streams[0].channel.game;
-                            window.location.href = 'index.html?channel=' + owner + '&game=' + game + "&color=black";
+                            window.location.href = 'http://twitch-frontier.herokuapp.com/index.html?channel=' + owner + '&game=' + game + "&color=black";
                         }
                     });
                 }
@@ -194,13 +194,23 @@ function videoCreate(){
     $("#vidDiv").append(iframe);
     $('#title').html( "Twitch Frontier found " + message + " playing " + game);
 }
-
+function createFacebook(message){
+    var iframe = document.createElement('iframe')
+    iframe.allowtransparency = 'true';
+    iframe.frameborder = '0';
+    iframe.id = 'facebook_like_iframe'
+    iframe.scrolling = 'no';
+    iframe.src = 'http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/'+ message + '&amp;layout=button_count&amp;show_faces=false&amp;width=85&amp;action=like&amp;colorscheme=light&amp;height=21';
+    iframe.style = 'border:none; overflow:hidden; width:85px; height:21px; position: relative; top: 3px;'
+    $("#fbLike").append(iframe);
+}
 function whiteListCheck(games) {
     if($.QueryString('color') == 'white')
         $('#filter').val(games);    
     else if($.QueryString('color') == 'black')
         $('#x').prop('checked', true);
 }
+<<<<<<< HEAD
 
 // Input is giant bomb id field from twitch's game info json response
 function getSimilarGames(game) {
@@ -229,3 +239,5 @@ function getSimilarGames(game) {
 function getStores(gameName) {
     
 }
+=======
+>>>>>>> d1399fd3966a2018ebcd390eacb6ac2b8c03ae50

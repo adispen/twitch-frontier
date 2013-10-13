@@ -210,8 +210,6 @@ function whiteListCheck(games) {
     else if($.QueryString('color') == 'black')
         $('#x').prop('checked', true);
 }
-<<<<<<< HEAD
-
 // Input is giant bomb id field from twitch's game info json response
 function getSimilarGames(game) {
     $.ajax({
@@ -239,5 +237,3 @@ function getSimilarGames(game) {
 function getStores(gameName) {
     
 }
-=======
->>>>>>> d1399fd3966a2018ebcd390eacb6ac2b8c03ae50

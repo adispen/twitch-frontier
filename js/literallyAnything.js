@@ -210,7 +210,7 @@ function createFacebook(message){
     iframe.frameBorder = '0';
     iframe.scrolling = 'no';
     iframe.height = '25px';
-    iframe.width = '89px';
+    iframe.width = '86px';
     iframe.src = "http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/" + message + "&layout=button_count&show_faces=false&width=10&action=like&colorscheme=dark&height=21";
     iframe.style = "marginwidth: 0; marginheight: 0; float:left; display:inline; border:none; overflow:hidden; width:10px; height:21px;";
     $("#fbLike").append(iframe);

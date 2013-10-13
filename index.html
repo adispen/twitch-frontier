@@ -82,8 +82,27 @@ Created by: Aedan Dispenza, Josh Romer, and Paul Tai 2013
 <div>
 <center>
 <div id="similar"></div>
-<div class="center"><div id="fbLike" class="left"></div></div>
-<div class="center"><div id="tweet" class="right"></div></div>
+<style type="text/css" media="screen">
+.socialcontainer {
+  width: 100%;
+  display: table;
+  border-spacing: 10px;
+}
+.socialleft{
+  display: table-cell;
+  width: 50%;
+  text-align: right;
+}
+.socialright {
+  display: table-cell;
+  width: 50%;
+  text-align: left;
+}
+</style>
+<div class="socialcontainer">
+<div id="fbLike" class="socialleft"></div>
+<div id="tweet" class="socialright"></div>
+</div>
 </center>
 </div>
 </center>

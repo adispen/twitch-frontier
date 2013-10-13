@@ -192,7 +192,9 @@ function videoCreate(){
     $("#vidDiv").append(iframe);
     $('#title').html( "Twitch Frontier found " + message + " playing " + game);
 }
-
+function createSocial(message){
+    var twitter = 
+}
 function whiteListCheck(games) {
     if($.QueryString('color') == 'white')
         $('#filter').val(games);    

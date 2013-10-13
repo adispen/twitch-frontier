@@ -67,6 +67,7 @@ $(function() {
         videoCreate();
         if(gameID != null) {
             getSimilarGames();
+            customAPI();
         }
         createFacebook(message);
         createTwitter(message, game);
@@ -263,7 +264,7 @@ function getSimilarGames() {
             for (var i = 0; i < similarGames.length; i++) {
                 temp = similarGames[i];
                 similarURLs = ( similarURLs + '<a href=' + temp.site_detail_url + '>' +temp.name+ '</a> <br style="line-height:120%">' );
-                console.log(similarURLs);
+                //console.log(similarURLs);
             }
             similarURLs += '<br>';
             postSimilarGames(similarURLs);
@@ -293,4 +294,74 @@ function getStores() {
     win.scrollTo(300,0);
     win.focus();
     
+}
+
+function customAPI() {
+    var dealURLs;
+    var yurl = 'https://query.yahooapis.com/v1/public/yql';
+    console.log(game);
+    var urlGameGet = 'http://www.cheapshark.com/getGameListFromTitleQuery.php?query='+ encodeURI( game ) + '&numResults=30';
+    $.ajax({
+        'url': yurl,
+        'data': {
+            'q': 'SELECT * FROM json WHERE url="'+urlGameGet+'"',
+            'format': 'json',
+            'jsonCompat': 'new',
+        },
+        'dataType': 'jsonp', 
+        'success': function (games) {
+            var temp = games.query.results.json.json;
+            var gameIDs = [];
+            for(var i = 0; i < temp.length; i++) {
+                gameIDs[i]=temp.id;
+                gameName = gameIDs[i][2];
+                cheapestPrice = gameIDs[i][1];
+                console.log(temp.id);
+                var urlDealGet = 'http://www.cheapshark.com/getPricesFromGameID.php?gameID='+gameID[i];
+                $.ajax({
+                    'url': yurl,
+                    'data': {
+                        'q': 'SELECT * FROM json WHERE url="'+urlDealGet+'"',
+                        'format': 'json',
+                        'jsonCompat': 'new',
+                    },
+                    'dataType': 'jsonp', 
+                    'success': function (deals) {
+                        console.log(deals);
+                        var temp2 = deals.query.results.json.json;
+                        //dealID[0] = dealID, 
+                        //dealID[1] = Price
+                        var dealID = temp2[0];
+                        redirectGet = 'http://www.cheapshark.com/redirect.php?dealID='+dealID[0];
+                            $.ajax({
+                                'url': yurl,
+                                'data': {
+                                    'q': 'SELECT * FROM json WHERE url="'+urlDealGet+'"',
+                                    'format': 'json',
+                                    'jsonCompat': 'new',
+                                },
+                                'dataType': 'jsonp', 
+                                'success': function (urls) {
+                                    console.log(urls);
+                                    var temp3 = urls.query.results.json.json;
+                                    dealURLs = (dealURLs + "<a href= 'http://www.cheapshark.com/redirct.php?dealID" + temp3[0] + "'>" + gameName + ' ' + cheapestPrice + "</a>");
+                                    
+                                }
+                            });
+                        }
+                });
+            }
+            postDealURLs(dealURLs);
+        }
+    });
+}
+
+function postDealURLs(dealURLs) {
+    var similar = document.getElementById('cheapest');
+    similar.scrolling = 'no';
+    similar.id = 'similar games';
+    similar.innerHTML = dealURLs;
+    similar.frameborder = '0';
+    similar.height = '480';
+    similar.width = "{WIDTH}";
 }

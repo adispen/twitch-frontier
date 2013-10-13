@@ -1,6 +1,7 @@
 var message = $.QueryString("channel");
 var game = $.QueryString("game");
 var gameID = $.QueryString("id");
+var color;
 if (message == null)
     game = '';
 else
@@ -16,9 +17,11 @@ $(function() {
     whiteListCheck(game);
     $('#random').click(function (evobj) {
         if ($('#x').is(':checked') == true) {
+            color = 'black';
             blackListRandom();
         } else if($('#filter').val() == ''){
-            normalRandom();
+            color = 'gray';
+            blackListRandom();
         } else {
             whiteListRandom();               
         }
@@ -91,7 +94,7 @@ $(function() {
     });
 });
 
-function normalRandom(){
+/*function normalRandom(){
     $.ajax({
         dataType: 'jsonp',
         url: 'https://api.twitch.tv/kraken/streams/summary',
@@ -110,6 +113,7 @@ function normalRandom(){
         }
     });
 }
+*/
 
 function whiteListRandom() {
     $.ajax({
@@ -130,7 +134,11 @@ function blackListRandom() {
         dataType: 'jsonp',
         url: 'https://api.twitch.tv/kraken/games/top?limit=1',
         success: function (games) {
-            var rand = Math.floor(Math.random()*(games._total-10) + 10);
+            var buffer = 0;
+            if(color=='black') {
+                buffer = 10;
+            }
+            var rand = Math.floor(Math.random()*(games._total-buffer) + buffer);
             $.ajax({
                 dataType: 'jsonp',
                 url: 'https://api.twitch.tv/kraken/games/top?limit=1&offset=' + rand,
@@ -146,7 +154,7 @@ function blackListRandom() {
                         success: function (channelList) {
                             var owner = channelList.streams[0].channel.display_name;
                             var game = channelList.streams[0].channel.game;
-                            window.location.href = 'http://twitch-frontier.herokuapp.com/index.html?channel=' + owner + '&game=' + game + "&id=" + gbID + "&color=black";
+                            window.location.href = 'http://twitch-frontier.herokuapp.com/index.html?channel=' + owner + '&game=' + game + "&id=" + gbID + "&color="+color;
                         }
                     });
                 }

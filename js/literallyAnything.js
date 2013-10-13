@@ -195,18 +195,13 @@ function videoCreate(){
     $('#title').html( "Twitch Frontier found " + message + " playing " + game);
 }
 function createFacebook(message){
-    var div = document.createElement('div');
-    div.class = "fb-like";
-    div.data-href = "http://www.twitch.tv/" + message;
-    div.data-width = "The pixel width of the plugin";
-    div.data-height = "The pixel height of the plugin";
-    div.data-colorscheme = "dark";
-    div.data-layout = "button_count";
-    div.data-action = "like";
-    div.data-show-faces = "false";
-    div.data-send = "false";
-
-    $("#fbLike").append(div);
+    var iframe = document.createElement('iframe');
+    iframe.allowtransparency = 'true';
+    iframe.frameborder = '0';
+    iframe.scrolling = 'no';
+    iframe.src = "http://www.facebook.com/plugins/like.php?href=http://www.twitch.tv/"+ message + "&layout=standard&show_faces=false&width=10&action=like&colorscheme=light&height=10";
+    iframe.style = 'border:none; overflow:hidden; width:10px; height:10px; position: relative; top: 3px;';
+    $("#fbLike").append(iframe);
 }
 function createTwitter(message, game){
     var iframe = document.createElement('iframe');

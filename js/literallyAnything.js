@@ -1,7 +1,5 @@
-var APIKEY = '8d728e293dc117083117383a6517eaff526fd50d';
 var message = $.QueryString("channel");
 var game = $.QueryString("game");
-var gameID = $.QueryString("giantbomb_id");
 if (message == null)
     game = '';
 else
@@ -202,23 +200,12 @@ function whiteListCheck(games) {
         $('#x').prop('checked', true);
 }
 
-// Input is giant bomb id field from twitch's game info json response
-function getSimilarGames(gameID) {
+function getSimilarGames(game) {
     $.ajax({
         dataType: 'jsonp',
-        url: 'http://www.giantbomb.com/api/game/' + gameID + '/?api_key=' + APIKEY + '&format=JSON&similar_games'
-        success: function (suggest) {
-            similarGames = []
-            for (var i = 0; i < suggest.similar_games.length; i++) {
-                similarGames.push(suggest.similar_games[i].name);
-            }
-            response(similarGames);
+        url: 'http://www.giantbomb.com/api/game/[RESOURCE-ID]/?api_key=[YOUR-KEY]&format=[RESPONSE-DATA-FORMAT]&field_list'
+        success: function (games) {
+            var rand = Math.floor(Math.random()*(games._total-10) + 10);
         }
     });
-}
-
-
-function getStores(gameName) {
-    sharkURL = 'http://www.cheapshark.com/search?q='+gameName;
-    
-}
+	

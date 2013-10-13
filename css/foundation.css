@@ -1307,14 +1307,14 @@ button, .button {
   font-family: inherit;
   font-weight: bold;
   line-height: 1;
-  margin: 0 0 1.25em;
+  margin-bottom: 3px;
   position: relative;
   text-decoration: none;
   text-align: center;
   display: inline-block;
   padding-top: 0.75em;
   padding-right: 1.5em;
-  padding-bottom: 0.8125em;
+  padding-bottom: 1px;
   padding-left: 1.5em;
   font-size: 1em;
   background-color: #6a4e9e;
@@ -1443,7 +1443,7 @@ button, .button {
     -webkit-appearance: none; }
   button.small, .button.small {
     padding-top: 0.625em;
-    padding-bottom: 0.5625em;
+    padding-bottom: 2px;
     -webkit-appearance: none; }
   button.large, .button.large {
     padding-top: 1.03125em;
@@ -2822,8 +2822,7 @@ label.error {
     height: 2.45em; }
   .top-bar .button {
     padding-top: .5em;
-    padding-bottom: .5em;
-    margin-bottom: 0; }
+    padding-bottom: 2px;}
   .top-bar .title-area {
     position: relative;
     margin: 0; }
@@ -3016,8 +3015,9 @@ label.error {
     .top-bar .button {
       line-height: 2em;
       font-size: 0.875em;
+      text-align: center;
       height: 2em;
-      padding: 0 10px;
+      padding-bottom: 3px;
       position: relative;
       top: 8px; }
     .top-bar.expanded {

@@ -208,3 +208,32 @@ function whiteListCheck(games) {
     else if($.QueryString('color') == 'black')
         $('#x').prop('checked', true);
 }
+
+// Input is giant bomb id field from twitch's game info json response
+function getSimilarGames(gameID) {
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'http://www.giantbomb.com/api/game/' + gameID + '/?api_key=8d728e293dc117083117383a6517eaff526fd50d&format=JSON&similar_games',
+        success: function (suggest) {
+            similarGames = []
+            for (var i = 0; i < suggest.similar_games.length; i++) {
+                similarGames.push(suggest.similar_games[i].name);
+            }
+        response(similarGames);
+        }
+    });
+    var similarGames = document.createElement('iframe');
+    similar.scrolling = 'no';
+    similar.id = 'similar games';
+    similar.src = similarGames;
+    similar.frameborder = '0';
+    similar.height = '480';
+    similar.width = "{WIDTH}";
+    
+
+}
+
+
+function getStores(gameName) {
+    
+}

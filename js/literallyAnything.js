@@ -206,7 +206,7 @@ function videoCreate(){
     iframe.height = '480';
     iframe.width = "{WIDTH}";
     $("#vidDiv").append(iframe);
-    $('#title').html( "Twitch Frontier found " + message + " playing " + game);
+    $('#title').html( "Twitch Frontier discovered " + message + " playing " + game);
 }
 function createFacebook(message){
     var iframe = document.createElement('iframe')
